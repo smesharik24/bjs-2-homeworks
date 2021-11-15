@@ -20,6 +20,19 @@ function getArrayParams(arr) {
   return { min: min, max: max, avg: avg };
 }
 
+function makeWork(arrOfArr, func) {
+  let max = 0;
+
+  for (let i = 0; i<arrOfArr.length; i++){
+    a = func(arrOfArr[i]);
+    if (a>max ){
+      max = a;
+    }
+  }
+  
+  return max;
+}
+
 // Задание 2
 function worker(arr) {
   let sum;
@@ -51,15 +64,3 @@ function worker2(arr) {
   return max - min;
 }
 
-function makeWork(arrOfArr, func) {
-  let max = 0;
-
-  for (let i = 0; i<arrOfArr.length; i++){
-    a = func(arrOfArr[i]);
-    if (a>max ){
-      max = a;
-    }
-  }
-  
-  return max;
-}
