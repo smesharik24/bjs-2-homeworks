@@ -31,23 +31,11 @@ function worker(arr) {
   return sum;
 }
 
-function makeWork(arrOfArr, worker) {
-  let max = 0;
-
-  for (let i = 0; i<arrOfArr.length; i++){
-    a = worker(arrOfArr[i]);
-    if (a>max ){
-      max = a;
-    }
-  }
-  
-  return max;
-}
 
 // Задание 3
 function worker2(arr) {
 
-  let min, max, raznica;
+  let min, max;
   min = Infinity;
   max = - Infinity;
 
@@ -59,16 +47,15 @@ function worker2(arr) {
       max = arr[i];
     } 
   }
-  raznica = max - min;
-
-  return raznica;
+  
+  return max - min;
 }
 
-function makeWork2(arrOfArr, worker2) {
+function makeWork(arrOfArr, func) {
   let max = 0;
 
   for (let i = 0; i<arrOfArr.length; i++){
-    a = worker(arrOfArr[i]);
+    a = func(arrOfArr[i]);
     if (a>max ){
       max = a;
     }
