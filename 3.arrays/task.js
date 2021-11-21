@@ -11,19 +11,8 @@ function compareArrays(arr1, arr2) {
 }
 
 
-
-
-
 function advancedFilter(arr) {
   let resultArr;
-
-  // resultArr = arr.filter(function(num){
-  //   return num > 0;
-  // });
-
-  // resultArr = resultArr.filter(function(num){
-  //   return num % 3 === 0
-  // }); 
   
 resultArr = arr.filter(function(num){
   return (num >0 && num % 3 === 0);
