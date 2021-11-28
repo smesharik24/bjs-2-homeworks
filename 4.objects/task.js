@@ -1,66 +1,76 @@
-// Задание 1
-function getArrayParams(arr) {
-  let min, max, sum, avg;
-    min = Infinity;
-    max = - Infinity;
-    sum = 0;
+//1
+function Student(name, gender, age) {
+    // Ваш код
+    this.name = name;
+    this.gender = gender;
+    this.age = age;
+}
+Student.prototype.getFullName = function () {
+  console.log(this.name + "" + this.gender + "" + this.age);
+}
+let student3 = new Student("Tony", "male", 37);
+let student4 = new Student("Buzz", "female", 35);
 
-  for ( let i=0; i<arr.length; i++){
-    if (arr[i] < min){
-      min = arr[i];
-    } 
-    if (arr[i] > max){
-      max = arr[i];
-    } 
-    sum = sum + arr[i];
-  }
-    avg = sum / arr.length;
-    avg = Number(avg.toFixed(2));
 
-  return { min: min, max: max, avg: avg };
+//2
+
+Student.prototype.setSubject = function (subjectName) {
+  //ваш код
+  this.subject = subjectName;
 }
 
-function makeWork(arrOfArr, func) {
-  let max = 0;
+student3.setSubject("Algebra");
 
-  for (let i = 0; i<arrOfArr.length; i++){
-    a = func(arrOfArr[i]);
-    if (a>max ){
-      max = a;
-    }
-  }
-  
-  return max;
-}
+student4.setSubject("Fizyka");
 
-// Задание 2
-function worker(arr) {
-  let sum;
-  sum = 0;
-  for (let i=0; i<arr.length; i++){
-    sum = sum + arr[i];
-  }
-
-  return sum;
+//3
+Student.prototype.addMark = function (mark) {
+  if(this.marks === undefined){
+    this.marks = [mark];
+    } else {
+    this.marks.push(mark);     
+   }
 }
 
 
-// Задание 3
-function worker2(arr) {
+student4.addMark(2);
+student4.addMark(3);
+student4.addMark(2);
 
-  let min, max;
-  min = Infinity;
-  max = - Infinity;
-
-  for (let i=0; i<arr.length; i++){
-    if (arr[i] < min){
-      min = arr[i];
-    } 
-    if (arr[i] > max){
-      max = arr[i];
-    } 
-  }
-  
-  return max - min;
+//4
+Student.prototype.addMarks = function (...marks) {
+  if(this.marks === undefined){
+    this.marks = [];
+  } 
+  marks.forEach( mark => this.marks.push(mark))
 }
+
+student3.addMarks(5, 2, 4);
+student4.addMarks(1, 2, 3);
+
+
+//5
+
+
+Student.prototype.getAverage = function() {
+  return this.marks.reduce((a, b) => a + b) / this.marks.length;
+}
+
+console.log(student3);
+console.log(student4);
+
+console.log(student3.getAverage());
+console.log(student4.getAverage());
+
+
+
+//6
+Student.prototype.exclude = function (reason) {
+  this.subjectName = '';
+  this.marks = [];
+  this.excluded = reason;
+}
+
+student3.exclude('low great')
+console.log(student3);
 
