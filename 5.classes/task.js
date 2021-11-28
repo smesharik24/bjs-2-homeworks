@@ -27,3 +27,44 @@ class PrintEditionItem {
         }
     }
 }
+
+
+class Magazine extends PrintEditionItem {
+    constructor(name, releaseDate, pagesCount) {
+        this.name = name;
+        this.releaseDate = releaseDate;
+        this.pagesCount = pagesCount;
+        this.state = 100;
+        this.type = "magazine"; 
+    }
+}
+
+class Book extends PrintEditionItem {
+    constructor(autor, name, releaseDate, pagesCount) {
+        super (name,releaseDate,pagesCount);
+        this.autor = autor;
+        this.type = "book";
+    } 
+}
+
+class NovelBook extends Book {
+    constructor(autor, name, releaseDate, pagesCount) {
+        super (name,releaseDate,pagesCount);
+       this.type = "novel";
+    }
+}
+
+class FantasticBook extends Book {
+    constructor(autor, name, releaseDate, pagesCount) {
+        super (name,releaseDate,pagesCount);
+       this.type = "fantastic";
+    }
+}
+
+class DetectiveBook extends Book {
+    constructor(autor, name, releaseDate, pagesCount) {
+        super (name,releaseDate,pagesCount);
+        this.type = "fantastic";
+    }
+}
+    
