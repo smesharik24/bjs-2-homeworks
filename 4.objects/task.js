@@ -66,8 +66,8 @@ console.log(student4.getAverage());
 
 //6
 Student.prototype.exclude = function (reason) {
-  this.subjectName = '';
-  this.marks = [];
+  delete this.subjectName;
+  delete this.marks;
   this.excluded = reason;
 }
 
