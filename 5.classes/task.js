@@ -41,31 +41,31 @@ class Magazine extends PrintEditionItem {
 }
 
 class Book extends PrintEditionItem {
-    constructor(autor, name, releaseDate, pagesCount) {
+    constructor(author, name, releaseDate, pagesCount) {
         super (name,releaseDate,pagesCount);
-        this.autor = autor;
+        this.author = author;
         this.type = "book";
     } 
 }
 
 class NovelBook extends Book {
-    constructor(autor, name, releaseDate, pagesCount) {
-        super (name,releaseDate,pagesCount);
+    constructor(author, name, releaseDate, pagesCount) {
+        super (author,name,releaseDate,pagesCount);
         this.type = "novel";
     }
 }
 
 class FantasticBook extends Book {
-    constructor(autor, name, releaseDate, pagesCount) {
-        super (name,releaseDate,pagesCount);
+    constructor(author, name, releaseDate, pagesCount) {
+        super (author,name,releaseDate,pagesCount);
         this.type = "fantastic";
     }
 }
 
 class DetectiveBook extends Book {
-    constructor(autor, name, releaseDate, pagesCount) {
-        super (name,releaseDate,pagesCount);
-        this.type = "fantastic";
+    constructor(author, name, releaseDate, pagesCount) {
+        super (author,name,releaseDate,pagesCount);
+        this.type = "detective";
     }
 }
     
@@ -74,13 +74,41 @@ class DetectiveBook extends Book {
 
 //2
 
+class Library {
+    constructor(name, books) {
+        this.name = name;
+        this.books = [];
+    }
 
+    addBook(book) {
+        if (book.state > 30) {
+            this.books = [book];
+        }
+    } 
+    
+    findBookBy(type, value) {
 
-findBookBy(type, value) {
-    if (this.books.find(book => book[type] === value)) {
-        return book;
-    }else if (this.books.find(book => book[type] == undefined)) {
-        return null;
+        const found = this.books.find(book => book[type] === value);
+        if (found == undefined) 
+            return null;
+        
+        return found;
+    }
+
+    giveBookByName(bookName) {
+
+        const found = this.books.find(book => book.name === bookName);
+
+        if (found == undefined)
+            return null;
+
+        const index  = this.books.indexOf(found);
+
+        if (index > -1) {
+            this.books.splice(index, 1);
+        }
+
+        return found;
+
     }
 }
-
